@@ -3,7 +3,7 @@ name: Deploy static site to GitHub Pages
 on:
   push:
     branches:
-      - principal  # ou 'main' selon ta branche
+      - principal  # ou main, selon ta branche
 
 jobs:
   deploy:
@@ -16,4 +16,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: .  # ou ./dist si tu compiles avant
+          publish_dir: ./mini
