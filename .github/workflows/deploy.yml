@@ -1,20 +1,19 @@
-name: Déploiement GitHub Pages
+name: Deploy static site to GitHub Pages
 
 on:
   push:
     branches:
-      - main
+      - principal  # ou 'main' selon ta branche
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Cloner le dépôt
-      uses: actions/checkout@v3
+      - name: Checkout source
+        uses: actions/checkout@v3
 
-    - name: Déployer sur GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: . # Racine du projet, puisque c'est un site statique
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .  # ou ./dist si tu compiles avant
